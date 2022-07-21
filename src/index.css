@@ -10,3 +10,19 @@ body {
   background-color: black;
   color: white;
 }
+
+.card-zoom {
+  @apply relative flex items-center justify-center m-3 overflow-hidden shadow-xl w-60 h-96 rounded-l;
+}
+.card-zoom-image {
+  @apply absolute w-full h-full transition-all duration-500 ease-in-out transform bg-center bg-cover;
+}
+.card-zoom-text {
+  @apply absolute text-2xl text-center font-black transition-all duration-500 ease-in-out transform invisible scale-150 text-gray-50  bg-black h-auto w-60 min-h-max opacity-70;
+}
+.card-zoom:hover .card-zoom-image {
+  @apply scale-150 visible cursor-pointer;
+}
+.card-zoom:hover .card-zoom-text {
+  @apply scale-100 visible;
+}

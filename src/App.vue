@@ -4,9 +4,9 @@ import { RouterLink, RouterView } from 'vue-router';
 
 <template>
   <header
-    class="flex h-20 bg-slate-900 opacity-90 items-center justify-between"
+    class="flex items-center justify-between h-20 bg-slate-900 opacity-90"
   >
-    <div class="flex ml-5 w-11/12 justify-left">
+    <div class="flex w-11/12 ml-5 justify-left">
       <img class="logo" src="./assets/images/netflix.png" alt="" />
 
       <nav class="flex justify-around w-9/12">
@@ -21,8 +21,16 @@ import { RouterLink, RouterView } from 'vue-router';
 
   <RouterView />
   <footer
-    class="h-12 flex justify-center items-center bg-slate-900 text-sm font-bold text-white opacity-40"
+    class="flex items-center justify-between h-12 text-sm font-bold text-white bg-slate-900"
   >
-    <p class="text-sm">Copyright 2022 - Guilhem SEYVET</p>
+    <p class="ml-10 text-sm text-white">Copyright 2022 - Guilhem SEYVET</p>
+    <div class="flex items-center justify-around w-24 mr-10">
+      <a href="https://www.linkedin.com/in/guilhem-seyvet/" target="_blank">
+        <img width="25" src="./assets/images/logo-linkedin.png" alt="linkedin" />
+      </a>
+      <a href="https://www.github.com/guilhemcv/" target="_blank">
+        <img width="25" src="./assets/images/logo-github.png" alt="github" />
+      </a>
+    </div>
   </footer>
 </template>
