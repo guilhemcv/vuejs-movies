@@ -8,10 +8,11 @@
           <img
             class="card-zoom-image"
             :src="imageChecker(show.poster_path)"
-            alt="{{show.title}}"
+            alt="{{show.name}}"
           />
           <h2 class="card-zoom-text">{{ show.name }}</h2>
         </div>
+        <CardModal :show="show"/>
       </div>
     </div>
   </div>
@@ -19,8 +20,12 @@
 
 <script>
 import axios from 'axios';
+import CardModal from '@/components/CardModal.vue';
 
 export default {
+  components: {
+    CardModal,
+  },
   name: 'MostViewedTvshows',
   data() {
     return {

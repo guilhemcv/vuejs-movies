@@ -21,8 +21,12 @@ body {
   @apply absolute text-2xl text-center font-black transition-all duration-500 ease-in-out transform invisible scale-150 text-gray-50  bg-black h-auto w-60 min-h-max opacity-70;
 }
 .card-zoom:hover .card-zoom-image {
-  @apply scale-150 visible cursor-pointer;
+  @apply scale-150 visible cursor-auto;
 }
 .card-zoom:hover .card-zoom-text {
   @apply scale-100 visible;
+}
+
+.card-zoom-text {
+@apply cursor-default;
 }
