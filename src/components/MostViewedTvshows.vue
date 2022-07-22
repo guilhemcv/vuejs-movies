@@ -1,6 +1,6 @@
 <template>
-  <div class="w-screen mt-20 mb-10 ml-auto mr-auto">
-    <h1 class="mt-5 mb-5 text-4xl bold">Top 20 Séries du moment</h1>
+  <div class="w-screen mb-10 ml-auto mr-auto">
+    <h1 class="mt-5 mb-5 text-2xl text-center md:text-4xl bold">Top 20 Séries du moment</h1>
     <p v-if="loading">Chargement en cours...</p>
     <div v-else class="flex flex-wrap justify-center">
       <div v-for="show in shows">
@@ -45,6 +45,7 @@ export default {
       .catch((err) => console.error(err))
       .finally(() => {
         this.loading = false;
+
       });
   },
   methods: {

@@ -1,3 +1,40 @@
+<script>
+import axios from 'axios';
+
+export default {
+  props: {
+    movie: Object,
+    show: Object,
+  },
+  data() {
+    return {
+      isOpen: false,
+      oneMovie: null,
+    };
+  },
+  methods: {
+    check() {
+      this.$emit('check');
+    },
+  },
+  mounted() {
+    this.loading = true;
+    console.log(this.movie.id);
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${this.movie.id}?api_key=${
+          import.meta.env.VITE_API_TMDB
+        }&language=fr-FR`
+      )
+      .then((res) => {
+        console.log(res.data);
+        this.oneMovie = res.data;
+      })
+      .catch((err) => console.error(err));
+  },
+};
+</script>
+
 <template>
   <div class="container mx-auto">
     <div class="flex justify-center">
@@ -14,16 +51,16 @@
         class="fixed inset-0 z-50 flex items-center justify-center bg-gray-700 bg-opacity-80"
       >
         <div
-          class="w-screen h-screen p-6 bg-gray-800 rounded-md shadow-xl my-14"
+          class="w-auto h-screen p-6 bg-gray-800 rounded-md shadow-xl md:w-[800px] my-14"
         >
-          <div class="flex items-center justify-between">
-            <h3 v-if="movie" class="text-2xl">{{ movie.title }}</h3>
+          <div class="flex justify-between">
+            <h3 v-if="movie" class="text-2xl text-center">{{ movie.title }}</h3>
             <h3 v-else class="text-2xl">{{ show.name }}</h3>
 
             <svg
               @click="isOpen = false"
               xmlns="http://www.w3.org/2000/svg"
-              class="w-8 h-8 text-gray-300 cursor-pointer"
+              class="w-8 h-8 text-gray-300 cursor-pointer tea"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -36,52 +73,27 @@
               />
             </svg>
           </div>
-          <div class="mt-4">
-            <p v-if="movie" class="mb-4 text-sm">
+          <div class="flex flex-col mt-4">
+            <img
+              v-if="oneMovie"
+              :src="check(oneMovie.backdrop_path)"
+              alt=""
+            />
+            <p v-if="movie" class="w-11/12 mx-auto mb-4 text-sm">
               {{ movie.overview }}
             </p>
             <p v-else class="mb-4 text-sm">{{ show.overview }}</p>
+
+            <p v-if="oneMovie">date de sortie : {{ oneMovie.release_date }}</p>
             <button
               @click="isOpen = false"
-              class="px-6 py-2 border border-gray-300 rounded text-grey-300"
+              class="px-6 py-2 text-center border border-gray-300 rounded text-grey-300"
             >
               Retour
             </button>
-            
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script>
-import axios from 'axios';
-
-export default {
-  props: {
-    movie: Object,
-    show: Object,
-  },
-  data() {
-    return {
-      isOpen: false,
-    };
-  },
-  /* mounted() {
-    this.loading = true;
-    movie = this.movie;
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movie}?api_key=${
-          import.meta.env.VITE_API_TMDB
-        }&language=fr-FR`
-      )
-      .then((res) => {
-        this.oneMovie = res.data.results;
-      })
-      .catch((err) => console.error(err))
-      .finally(() => {});
-  }, */
-};
-
-</script>

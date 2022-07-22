@@ -1,6 +1,6 @@
 <template>
 <div class="w-screen ml-auto mr-auto">
-    <h1 class="mt-5 mb-5 text-4xl bold">Top 20 Films à l'affiche</h1>
+    <h1 class="mt-5 mb-5 text-2xl text-center md:text-4xl bold">Top 20 Films à l'affiche</h1>
     <p v-if="loading">Chargement en cours...</p>
     <div v-else class="flex flex-wrap justify-center">
       <div v-for="movie in movies">
@@ -12,7 +12,7 @@
           />
           <h2 class="card-zoom-text">{{ movie.title }}</h2>
         </div>
-        <CardModal v-if="movie" :movie="movie" />
+        <CardModal v-if="movie" :movie="movie" @check="imageChecker" />
       </div>
     </div>
   </div>
@@ -46,6 +46,7 @@ export default {
       })
       .catch((err) => console.error(err))
       .finally(() => {
+        console.log(this.movies);
         this.loading = false;
       });
   },

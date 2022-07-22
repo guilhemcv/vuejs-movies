@@ -4,19 +4,19 @@ import { RouterLink, RouterView } from 'vue-router';
 
 <template>
   <header
-    class="flex items-center justify-between h-20 bg-slate-900 opacity-90"
+    class="flex flex-col items-center justify-between md:flex-row md:items-center md:h-20 bg-slate-900 opacity-90"
   >
-    <div class="flex w-11/12 ml-5 justify-left">
+    <div class="flex flex-col items-center w-11/12 mt-5 ml-5 md:mt-0 md:flex-row justify-left">
       <img class="logo" src="./assets/images/netflix.png" alt="" />
 
-      <nav class="flex justify-around w-9/12">
+      <nav class="flex flex-col items-center justify-around w-9/12 mb-2 md:mb-0 md:flex-row">
         <RouterLink to="/">Accueil</RouterLink>
         <RouterLink to="/series">Séries</RouterLink>
         <RouterLink to="/films">Films</RouterLink>
         <RouterLink to="/best">Les plus consultés</RouterLink>
       </nav>
     </div>
-    <img class="mr-5" src="./assets/images/loupe.png" alt="" />
+    <img class="mb-5 ml-5 md:mr-5 md:mb-0" src="./assets/images/loupe.png" alt="" />
   </header>
 
   <RouterView />
