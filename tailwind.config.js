@@ -6,6 +6,7 @@ module.exports = {
       width: {
         300: '300px',
         150: '150px',
+        "double": "200%",
       },
       paddingTop: {
         150: '150px',

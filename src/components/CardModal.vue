@@ -11,7 +11,7 @@
 
       <div
         v-show="isOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center overflow-scroll bg-gray-700 pt-[450px] bg-opacity-80"
+        class="fixed inset-0 z-50 flex items-center justify-center overflow-scroll bg-gray-700 pt-[600px] bg-opacity-80"
       >
         <div
           class="w-auto p-6 bg-gray-800 rounded-md shadow-xl md:w-[800px] my-14"
@@ -116,6 +116,7 @@ export default {
   props: {
     movie: Object,
     show: Object,
+    movieId: Number,
   },
   data() {
     return {
@@ -128,11 +129,11 @@ export default {
     };
   },
 
-  mounted() {
+  mounted(){
     axios
       .get(
         `https://api.themoviedb.org/3/${this.movie ? 'movie' : 'tv'}/${
-          this.movie ? this.movie.id : this.show.id
+          this.movie ? this.movieId : this.show.id
         }?api_key=${import.meta.env.VITE_API_TMDB}&language=fr-FR`
       )
       .then((res) => {

@@ -1,15 +1,17 @@
 <template>
-  <div class="h-screen">
-    <h1>Films</h1>
-    <CardModal />
+  <div class="">
+    <h1>Films les + populaires</h1>
+    <MostPopulareMovieVue />
   </div>
 </template>
 
 <script>
-import CardModal from '@/components/CardModal.vue';
+import MostPopulareMovieVue from '../components/MostPopulareMovie.vue';
 export default {
+  name: 'FilmsView',
+
   components: {
-    CardModal,
+    MostPopulareMovieVue,
   },
 };
 </script>

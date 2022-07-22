@@ -1,9 +1,12 @@
-<script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <Tendances />
 </template>
+
+<script>
+import Tendances from '../components/Tendances.vue';
+export default {
+  components: {
+    Tendances,
+  },
+};
+</script>
