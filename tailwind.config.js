@@ -5,6 +5,10 @@ module.exports = {
     extend: {
       width: {
         300: '300px',
+        150: '150px',
+      },
+      paddingTop: {
+        150: '150px',
       },
       scale: {
         1000: '100',
