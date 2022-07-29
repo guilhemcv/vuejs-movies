@@ -12,7 +12,7 @@
           />
           <h2 class="card-zoom-text">{{ movie.title }}</h2>
         </div>
-        <CardModal v-if="movie" :movie="movie" @check="imageChecker" />
+        <CardModal v-if="movie" :movie="movie" :movieId="movie.id" @check="imageChecker" />
       </div>
     </div>
   </div>

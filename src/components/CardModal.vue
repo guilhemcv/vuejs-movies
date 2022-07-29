@@ -68,7 +68,9 @@
             <p class="my-3" v-if="oneMovie">
               Durée : {{ oneMovie.runtime }} minutes
             </p>
-            <p class="my-3" v-if="oneMovie">Budget : {{ oneMovie.budget }} $</p>
+            <p class="my-3" v-if="oneMovie && oneMovie.budget !== 0">
+              Budget : {{ oneMovie.budget.toLocaleString() }} $
+            </p>
             <p v-if="oneShow">
               date de première sortie :
               {{ oneShow.first_air_date.split('-').reverse().join('/') }}
@@ -129,7 +131,7 @@ export default {
     };
   },
 
-  mounted(){
+  mounted() {
     axios
       .get(
         `https://api.themoviedb.org/3/${this.movie ? 'movie' : 'tv'}/${

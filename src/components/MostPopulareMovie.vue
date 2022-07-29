@@ -1,4 +1,3 @@
-import axios from 'axios';
 <template>
   <div class="w-screen ml-auto mr-auto">
     <div class="flex flex-wrap justify-center">
@@ -11,7 +10,7 @@ import axios from 'axios';
           />
           <h2 class="card-zoom-text">{{ movie.title }}</h2>
         </div>
-          <CardModal v-if="movie" :movie="movie" :movieId="movie.id" />
+        <CardModal v-if="movie" :movie="movie" :movieId="movie.id" :key="newKey" />
       </div>
     </div>
     <Pagination @update="forceUpdate($event)" />
@@ -22,6 +21,7 @@ import axios from 'axios';
 import axios from 'axios';
 import CardModal from '@/components/CardModal.vue';
 import Pagination from './Pagination.vue';
+
 export default {
   name: 'FilmsView',
   components: {
@@ -32,6 +32,7 @@ export default {
     return {
       movies: [],
       page: 1,
+      newKey: 0,
     };
   },
   mounted() {
@@ -39,13 +40,14 @@ export default {
       .get(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${
           import.meta.env.VITE_API_TMDB
-        }&language=fr-FR&page=1`
+        }&language=fr-FR&page=${this.page}`
       )
       .then((res) => {
         this.movies = res.data.results;
       })
       .catch((err) => console.error(err));
   },
+
   methods: {
     forceUpdate(number) {
       this.$forceUpdate();
@@ -57,6 +59,7 @@ export default {
         )
         .then((res) => {
           this.movies = res.data.results;
+          this.newKey = this.newKey + 1;
         })
         .catch((err) => console.error(err));
     },
