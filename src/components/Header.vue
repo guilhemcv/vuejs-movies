@@ -1,6 +1,6 @@
 <template>
   <header
-    class="fixed top-0 left-0 z-50 flex flex-col items-center justify-between w-screen h-auto md:flex-row md:items-center md:h-20 bg-slate-800 opacity-90"
+    class="flex flex-col items-center justify-between w-screen h-auto  md:flex-row md:items-center md:h-20 bg-slate-800 opacity-90"
   >
     <div
       class="flex flex-col items-center justify-between w-full h-full mt-5 mb-2 md:ml-5 md:justify-start md:mt-0 md:flex-row"

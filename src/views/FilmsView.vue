@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="loadTrending === false && loadMostRated === false && loadMostPopular === false"
-    class="flex flex-col items-center justify-center h-full my-20 translate-y-20 md:translate-y-0 pb-60 md:pb-40"
+    class="flex flex-col items-center justify-center h-full pb-60 md:pb-40"
   >
     <button
       @click="loadTrending = true"
@@ -22,8 +22,8 @@
       Films les mieux notés
     </button>
   </div>
-  <div v-if="loadMostPopular" class="translate-y-40">
-    <div class="flex justify-center">
+  <div v-if="loadMostPopular" class="mb-10">
+    <div class="flex justify-center mt-10">
       <button
         @click="loadMostPopular = false"
         class="px-4 py-2 mx-auto font-semibold text-white bg-transparent border border-white rounded hover:bg-red-500 hover:text-white hover:border-transparent"
@@ -33,8 +33,8 @@
     </div>
     <MostPopular />
   </div>
-  <div v-if="loadTrending" class="mb-10 translate-y-40">
-    <div class="flex justify-center">
+  <div v-if="loadTrending" class="mb-10">
+    <div class="flex justify-center mt-10">
       <button
         @click="loadTrending = false"
         class="px-4 py-2 mx-auto font-semibold text-white bg-transparent border border-white rounded hover:bg-red-500 hover:text-white hover:border-transparent"
@@ -44,8 +44,8 @@
     </div>
     <Trending />
   </div>
-  <div v-if="loadMostRated" class="mb-10 translate-y-40">
-    <div class="flex justify-center">
+  <div v-if="loadMostRated" class="mb-10 ">
+    <div class="flex justify-center mt-10">
       <button
         @click="loadMostRated = false"
         class="px-4 py-2 mx-auto font-semibold text-white bg-transparent border border-white rounded hover:bg-red-500 hover:text-white hover:border-transparent"

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen mt-20 ml-auto mr-auto">
+  <div class="w-screen py-10 ml-auto mr-auto">
     <div class="flex flex-wrap justify-center">
       <div v-for="movie in movies">
         <div class="card-zoom">
