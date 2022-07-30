@@ -1,5 +1,5 @@
 <template>
-    <div class="pb-10">
+    <div class="pb-20">
     <nav class="flex justify-center" aria-label="Page navigation example">
       <ul class="inline-flex -space-x-px">
         <li>
