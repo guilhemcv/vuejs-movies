@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen ml-auto mr-auto">
+  <div class="w-screen mt-20 ml-auto mr-auto">
     <div class="flex flex-wrap justify-center">
       <div v-for="movie in movies">
         <div class="card-zoom">
@@ -64,8 +64,8 @@ export default {
         .catch((err) => console.error(err));
     },
     imageChecker(image) {
-      if (image === null) {
-        return 'https://via.placeholder.com/500x750';
+      if (image === null || image === undefined || image === '') {
+        return 'https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg';
       } else {
         return `https://image.tmdb.org/t/p/w300/${image}`;
       }

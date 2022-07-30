@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="translate-y-20">
     <div class="flex items-center justify-center mt-5">
       <button
         @click="comp = 'movies'"

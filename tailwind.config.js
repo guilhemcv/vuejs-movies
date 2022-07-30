@@ -8,6 +8,10 @@ module.exports = {
         150: '150px',
         "double": "200%",
       },
+      height: {
+        900: '900px',
+        400: '400px',
+      },
       paddingTop: {
         150: '150px',
       },

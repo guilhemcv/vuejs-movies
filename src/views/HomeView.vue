@@ -1,5 +1,19 @@
 <template>
-  <Tendances />
+  <div class="flex flex-col items-center justify-around translate-y-60 md:translate-y-28 lg:translate-y-60 lg:flex-row">
+    <div class="flex flex-col w-6/12 md:ml-10">
+      <h1 class="mb-10 text-2xl text-center md:text-3xl lg:text-left lg:text-5xl">
+        Tous vos films et séries<br />dans une seule App.
+      </h1>
+      <p class="w-11/12 mx-auto mb-10 text-center md:mx0 lg:text-left lg:mx-0 lg:w-8/12">
+        Retrouvez vos films et séries préférés, mais aussi les dernières
+        sorties et les grands classiques du cinéma. <br />Utilisez la page de recherche pour trouver votre bonheur
+        !
+      </p>
+    </div>
+    <div>
+      <img class="mb-24 lg:mb-0 opacity-70 lg:mr-20" src="../assets/images/accueil.gif" alt="accueil" width="600" />
+    </div>
+  </div>
 </template>
 
 <script>

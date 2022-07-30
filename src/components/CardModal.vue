@@ -161,10 +161,10 @@ export default {
   },
   methods: {
     imageChecker(image) {
-      if (image === null) {
-        return 'https://via.placeholder.com/500x750';
+      if (image === null || image === undefined || image === '') {
+        return 'https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg';
       } else {
-        return `https://image.tmdb.org/t/p/w500/${image}`;
+        return `https://image.tmdb.org/t/p/w300/${image}`;
       }
     },
   },
