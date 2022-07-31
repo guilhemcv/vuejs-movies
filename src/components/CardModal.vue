@@ -11,10 +11,10 @@
 
       <div
         v-show="isOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center overflow-scroll bg-gray-700 pt-[600px] bg-opacity-80"
+        class="fixed inset-0 z-50 flex items-center justify-center overflow-scroll bg-gray-700 pt-[1000px] md:pt-[600px] bg-opacity-80"
       >
         <div
-          class="w-auto p-6 bg-gray-800 rounded-md shadow-xl md:w-[800px] my-14"
+          class="w-10/12 mr-5 p-6 bg-gray-800 rounded-md shadow-xl md:w-[800px] my-14"
         >
           <div class="flex justify-between">
             <h3 v-if="oneMovie" class="text-2xl text-center">
@@ -54,10 +54,10 @@
               class="mx-auto my-10"
             />
             <h2 class="mt-5 mb-2 text-xl underline">Synopsis :</h2>
-            <p v-if="oneMovie" class="mx-auto mb-4 text-justify">
+            <p v-if="oneMovie" class="mx-auto mb-4 md:text-justify">
               {{ oneMovie.overview }}
             </p>
-            <p v-if="oneShow" class="mx-auto mt-5 mb-4 text-justify">
+            <p v-if="oneShow" class="mx-auto mt-5 mb-4 md:text-justify">
               {{ oneShow.overview }}
             </p>
 
@@ -82,6 +82,21 @@
             <p class="mb-10" v-if="oneShow">
               nombre d'épisodes : {{ oneShow.number_of_episodes }}
             </p>
+            <h4 class="mb-5">Casting :</h4>
+            <div class="flex flex-wrap justify-around">
+              <div v-for="actor in cast">
+                <div class="flex flex-col items-center justify-center w-28">
+                  <a :href="imageChecker(actor.profile_path)" target="_blank">
+                  <img
+                    width="50"
+                    :src="imageChecker(actor.profile_path)"
+                    alt="{{actor.name}}"
+                  />
+                  </a>
+                  <p class="mb-10 text-sm text-center">{{ actor.name }}</p>
+                </div>
+              </div>
+            </div>
             <LiteYouTubeEmbed
               v-if="oneTrailer && oneMovie"
               :id="oneTrailer.length > 0 ? oneTrailer[0].key : ''"
@@ -94,7 +109,7 @@
             />
             <button
               @click="isOpen = false"
-              class="px-6 py-2 mx-auto mt-10 text-center border border-gray-300 rounded text-grey-300 w-96"
+              class="px-6 py-2 mx-auto mt-10 text-center border border-gray-300 rounded text-grey-300 md:w-96"
             >
               Retour
             </button>
@@ -126,6 +141,7 @@ export default {
       oneMovie: null,
       oneShow: null,
       oneTrailer: null,
+      cast: [],
       videoId:
         'https://www.youtube.com/watch?v=_daTfgc4u3k&ab_channel=WorkMusicLab',
     };
@@ -136,28 +152,18 @@ export default {
       .get(
         `https://api.themoviedb.org/3/${this.movie ? 'movie' : 'tv'}/${
           this.movie ? this.movieId : this.show.id
-        }?api_key=${import.meta.env.VITE_API_TMDB}&language=fr-FR`
+        }?api_key=${
+          import.meta.env.VITE_API_TMDB
+        }&language=fr-FR&append_to_response=videos,credits`
       )
       .then((res) => {
         this.movie ? (this.oneMovie = res.data) : (this.oneShow = res.data);
-      })
-      .then(
-        axios
-          .get(
-            `https://api.themoviedb.org/3/${this.movie ? 'movie' : 'tv'}/${
-              this.movie ? this.movie.id : this.show.id
-            }/videos?api_key=${import.meta.env.VITE_API_TMDB}&language=fr-FR`
-          )
-          .then((res) => {
-            this.oneTrailer = res.data.results.filter(
-              (trailer) => trailer.type === 'Trailer'
-            );
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      )
-      .catch((err) => console.error(err));
+        this.oneTrailer = res.data.videos.results.filter(
+          (trailer) => trailer.type === 'Trailer'
+        );
+        this.cast = res.data.credits.cast.splice(0,12);
+        console.log(this.cast);
+      });
   },
   methods: {
     imageChecker(image) {

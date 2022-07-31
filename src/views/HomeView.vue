@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col items-center justify-around translate-y-60 md:translate-y-28 lg:translate-y-60 lg:flex-row">
-    <div class="flex flex-col w-6/12 md:ml-10">
+  <div class="flex flex-col items-center justify-around translate-y-6 md:translate-y-28 lg:translate-y-60 lg:flex-row">
+    <div class="flex flex-col w-11/12 md:ml-10">
       <h1 class="mb-10 text-2xl text-center md:text-3xl lg:text-left lg:text-5xl">
         Tous vos films et séries<br />dans une seule App.
       </h1>
