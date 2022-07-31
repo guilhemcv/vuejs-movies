@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto ">
     <div class="flex justify-center">
       <button
         @click="isOpen = true"
@@ -10,8 +10,9 @@
       </button>
 
       <div
+        v-if="isOpen"
         v-show="isOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center overflow-scroll bg-gray-700 pt-[1000px] md:pt-[600px] bg-opacity-80"
+        class="fixed inset-0  z-50 flex items-center justify-center overflow-auto bg-gray-700  md:pt-[900px] bg-opacity-80"
       >
         <div
           class="w-10/12 mr-5 p-6 bg-gray-800 rounded-md shadow-xl md:w-[800px] my-14"
@@ -87,11 +88,11 @@
               <div v-for="actor in cast">
                 <div class="flex flex-col items-center justify-center w-28">
                   <a :href="imageChecker(actor.profile_path)" target="_blank">
-                  <img
-                    width="50"
-                    :src="imageChecker(actor.profile_path)"
-                    alt="{{actor.name}}"
-                  />
+                    <img
+                      width="50"
+                      :src="imageChecker(actor.profile_path)"
+                      alt="{{actor.name}}"
+                    />
                   </a>
                   <p class="mb-10 text-sm text-center">{{ actor.name }}</p>
                 </div>
@@ -148,22 +149,22 @@ export default {
   },
 
   mounted() {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/${this.movie ? 'movie' : 'tv'}/${
-          this.movie ? this.movieId : this.show.id
-        }?api_key=${
-          import.meta.env.VITE_API_TMDB
-        }&language=fr-FR&append_to_response=videos,credits`
-      )
-      .then((res) => {
-        this.movie ? (this.oneMovie = res.data) : (this.oneShow = res.data);
-        this.oneTrailer = res.data.videos.results.filter(
-          (trailer) => trailer.type === 'Trailer'
-        );
-        this.cast = res.data.credits.cast.splice(0,12);
-        console.log(this.cast);
-      });
+      axios
+        .get(
+          `https://api.themoviedb.org/3/${this.movie ? 'movie' : 'tv'}/${
+            this.movie ? this.movieId : this.show.id
+          }?api_key=${
+            import.meta.env.VITE_API_TMDB
+          }&language=fr-FR&append_to_response=videos,credits`
+        )
+        .then((res) => {
+          this.movie ? (this.oneMovie = res.data) : (this.oneShow = res.data);
+          this.oneTrailer = res.data.videos.results.filter(
+            (trailer) => trailer.type === 'Trailer'
+          );
+          this.cast = res.data.credits.cast.splice(0, 12);
+          console.log(this.cast);
+        });
   },
   methods: {
     imageChecker(image) {

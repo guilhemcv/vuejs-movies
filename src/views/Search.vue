@@ -1,6 +1,6 @@
-<template class="h-screen">
+<template>
   <div
-    class="flex flex-col items-center justify-center h-screen -translate-y-40"
+    class="flex flex-col items-center justify-center h-full pb-40 -mb-20"
     v-if="searched === false"
   >
     <h3 class="mb-5 text-lg md:text-xl">Rechercher un film ou une série :</h3>

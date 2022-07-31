@@ -4,7 +4,7 @@ import Footer from './components/Footer.vue';
 </script>
 
 <template>
-  <div class="h-screen">
+  <div class= "h-screen">
     <Header />
     <Footer />
   </div>

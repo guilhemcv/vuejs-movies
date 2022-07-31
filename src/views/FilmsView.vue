@@ -1,26 +1,36 @@
 <template>
   <div
-    v-if="loadTrending === false && loadMostRated === false && loadMostPopular === false"
+    v-if="
+      loadTrending === false &&
+      loadMostRated === false &&
+      loadMostPopular === false
+    "
     class="flex flex-col items-center justify-center h-full pb-60 md:pb-40"
   >
-    <button
-      @click="loadTrending = true"
-      class="h-20 px-4 py-2 font-semibold text-white bg-transparent border border-white rounded w-72 md:w-96 hover:bg-red-500 hover:text-white hover:border-transparent"
-    >
-      Tendances actuelles
-    </button>
-    <button
-      @click="loadMostPopular = true"
-      class="h-20 px-4 py-2 my-5 font-semibold text-white bg-transparent border border-white rounded w-72 md:w-96 hover:bg-red-500 hover:text-white hover:border-transparent"
-    >
-      Films les plus populaires
-    </button>
-    <button
-      @click="loadMostRated = true"
-      class="h-20 px-4 py-2 font-semibold text-white bg-transparent border border-white rounded w-72 md:w-96 hover:bg-red-500 hover:text-white hover:border-transparent"
-    >
-      Films les mieux notés
-    </button>
+  <h2 class="pb-10 text-3xl font-bold text-center underline">Les Films</h2>
+   <button
+        @click="loadTrending = true"
+        class="flex items-center justify-around h-20 px-4 py-2 font-semibold text-white bg-transparent border border-white rounded shadow-xl w-72 md:w-96 hover:bg-red-500 hover:text-white hover:border-transparent"
+      >
+        Tendances aujourd'hui
+        <img src="../assets/images/trend.png" alt="trend">
+      </button>
+      
+      <button
+        @click="loadMostPopular = true"
+        class="flex items-center justify-around h-20 px-4 py-2 my-5 font-semibold text-white bg-transparent border border-white rounded shadow-xl w-72 md:w-96 hover:bg-red-500 hover:text-white hover:border-transparent"
+      >
+        Films les plus populaires 
+        <img src="../assets/images/fire.png" alt="fire" >
+        
+      </button>
+      <button
+        @click="loadMostRated = true"
+        class="flex items-center justify-around h-20 px-4 py-2 font-semibold text-white bg-transparent border border-white rounded shadow-xl w-72 md:w-96 hover:bg-red-500 hover:text-white hover:border-transparent"
+      >
+        Films les mieux notés 
+        <img src="../assets/images/badge.png" alt="badge">
+      </button>
   </div>
   <div v-if="loadMostPopular" class="mb-10">
     <div class="flex justify-center mt-10">
@@ -44,7 +54,7 @@
     </div>
     <Trending />
   </div>
-  <div v-if="loadMostRated" class="mb-10 ">
+  <div v-if="loadMostRated" class="mb-10">
     <div class="flex justify-center mt-10">
       <button
         @click="loadMostRated = false"
@@ -74,7 +84,6 @@ export default {
       loadMostRated: false,
       loadTrending: false,
       loadMostPopular: false,
-      
     };
   },
 };

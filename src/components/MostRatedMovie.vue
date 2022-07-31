@@ -10,7 +10,17 @@
           />
           <h2 class="card-zoom-text">{{ movie.title }}</h2>
         </div>
-        <CardModal v-if="movie" :movie="movie" :movieId="movie.id" :key="newKey" />
+        <div class="flex justify-center mb-5">
+          <router-link
+            class="px-4 py-2 mx-auto font-semibold text-white bg-red-600 border border-red-600 rounded hover:bg-red-500 hover:text-white hover:border-transparent"
+            :to="{
+              name: 'detailFilm',
+              params: { id: movie.id, type: 'film' },
+            }"
+          >
+            Détail
+          </router-link>
+        </div>
       </div>
     </div>
     <Pagination @update="forceUpdate($event)" />
@@ -19,13 +29,11 @@
 
 <script>
 import axios from 'axios';
-import CardModal from '@/components/CardModal.vue';
 import Pagination from './Pagination.vue';
 
 export default {
   name: 'FilmsView',
   components: {
-    CardModal,
     Pagination,
   },
   data() {

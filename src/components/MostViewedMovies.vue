@@ -1,6 +1,8 @@
 <template>
-<div class="w-screen ml-auto mr-auto">
-    <h1 class="mt-5 mb-5 text-2xl text-center md:text-4xl bold">Top 20 Films à l'affiche</h1>
+  <div class="w-screen ml-auto mr-auto">
+    <h1 class="mt-5 mb-5 text-2xl text-center md:text-4xl bold">
+      Top 20 Films à l'affiche
+    </h1>
     <p v-if="loading">Chargement en cours...</p>
     <div v-else class="flex flex-wrap justify-center">
       <div v-for="movie in movies">
@@ -12,20 +14,26 @@
           />
           <h2 class="card-zoom-text">{{ movie.title }}</h2>
         </div>
-        <CardModal v-if="movie" :movie="movie" :movieId="movie.id" @check="imageChecker" />
+        <div class="flex justify-center mb-5">
+          <router-link
+            class="px-4 py-2 mx-auto font-semibold text-white bg-red-600 border border-red-600 rounded hover:bg-red-500 hover:text-white hover:border-transparent"
+            :to="{
+              name: 'detailFilm',
+              params: { id: movie.id, type: 'film' },
+            }"
+          >
+            Détail
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
-  </template>
+</template>
 
 <script>
 import axios from 'axios';
-import CardModal from '@/components/CardModal.vue';
 
 export default {
-  components: {
-    CardModal,
-  },
   name: 'MostViewedMovies',
   data() {
     return {

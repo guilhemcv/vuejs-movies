@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="fixed bottom-0 left-0 flex flex-col-reverse items-center justify-around w-full h-20 mt-auto text-sm font-bold text-white md:justify-between md:flex-row md:h-12 bg-slate-800"
+    class="fixed bottom-0 left-0 flex flex-col-reverse items-center justify-around w-full h-20 mt-auto text-sm font-bold text-white bg-gris md:justify-between md:flex-row md:h-12"
   >
     <p class="text-xs text-white md:ml-10 md:text-sm">Copyright 2022 - Guilhem SEYVET</p>
     <div class="flex items-center justify-around w-24 md:mr-10">
