@@ -101,8 +101,8 @@
         </div>
       </div>
     </div>
-    <div class="w-9/12 mx-auto mt-20 border border-white"></div>
-    <h2
+    <div v-if="videos.length > 0" class="w-9/12 mx-auto mt-20 border border-white"></div>
+    <h2 v-if="videos.length > 0"
       class="my-10 text-2xl font-bold text-center underline lg:my-20 lg:text-3xl"
     >
       Vidéos
@@ -139,7 +139,7 @@
     </div>
   </div>
   <div v-if="oneShow">
-    <h2 class="mt-10 text-3xl text-center underline lg:mt-0 lg:text-4xl">
+    <h2 class="mt-10 text-3xl text-center underline lg:text-4xl">
       {{ oneShow.name }}
     </h2>
     <div
@@ -151,7 +151,7 @@
         width="500"
       />
       <div class="flex flex-col justify-between w-10/12 lg:w-5/12">
-        <h2 class="mt-10 mb-2 text-xl underline text lg:mt-0">Synopsis :</h2>
+        <h2 class="mt-10 mb-2 text-xl underline text">Synopsis :</h2>
         <p class="mx-auto mb-4 text-justify">
           {{ oneShow.overview }}
         </p>
@@ -227,8 +227,8 @@
         </div>
       </div>
     </div>
-    <div class="w-9/12 mx-auto mt-20 border border-white"></div>
-    <h2
+    <div v-if="videos.length > 0" class="w-9/12 mx-auto mt-20 border border-white"></div>
+    <h2 v-if="videos.length > 0"
       class="my-10 text-2xl font-bold text-center underline lg:my-20 lg:text-3xl"
     >
       Vidéos
@@ -264,6 +264,9 @@
       </div>
     </div>
   </div>
+<back-to-top bottom="90px" right="30px">
+  <button type="button" class="p-3 text-black bg-yellow-400 rounded">Retour en haut</button>
+</back-to-top>    
 </template>
 
 <script>
@@ -314,7 +317,7 @@ export default {
         this.genres = res.data.genres;
         this.cast = res.data.credits.cast.splice(0, 15);
         this.producers = res.data.credits.crew.filter(
-          (crew) => crew.job === 'Producer'
+          (crew) => crew.job === 'Director'
         );
         this.similar = res.data.similar.results.splice(0, 5);
       });

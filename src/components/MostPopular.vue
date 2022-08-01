@@ -25,6 +25,7 @@
     </div>
     <Pagination @update="forceUpdate($event)" />
   </div>
+      <back-to-top text="Back to top"></back-to-top>
 </template>
 
 <script>

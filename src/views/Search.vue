@@ -52,7 +52,7 @@
       <h2 v-if="loading" class="my-10 text-3xl text-center">
         Films contenant <span class="italic">"{{ search }}"</span>
       </h2>
-      <div class="flex flex-wrap justify-center">
+      <div class="flex flex-wrap justify-center mb-10">
         <div v-for="movie in movies">
           <div class="card-zoom">
             <img
@@ -89,7 +89,7 @@
       <h2 v-if="loading" class="my-10 text-3xl text-center underline">
         Séries contenant <span class="italic">"{{ search }}"</span>
       </h2>
-      <div class="flex flex-wrap justify-center">
+      <div class="flex flex-wrap justify-center mb-10">
         <div v-for="show in shows">
           <div class="card-zoom">
             <img
@@ -125,11 +125,7 @@
 
 <script>
 import axios from 'axios';
-import CardModal from '../components/CardModal.vue';
 export default {
-  components: {
-    CardModal,
-  },
   data() {
     return {
       search: '',
