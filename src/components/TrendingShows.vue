@@ -6,9 +6,9 @@
           <img
             class="card-zoom-image"
             :src="imageChecker(show.poster_path)"
-            alt="{{show.title}}"
+            alt="{{show.name}}"
           />
-          <h2 class="card-zoom-text">{{ show.title }}</h2>
+          <h2 class="card-zoom-text">{{ show.name }}</h2>
         </div>
         <div class="flex justify-center mb-5">
           <router-link

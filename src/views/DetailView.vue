@@ -1,7 +1,6 @@
 <template>
   <DetailsVue :id="this.$route.params.id" :type="this.$route.params.type" />
-  <p>{{ this.$route.params.id }}</p>
-  <p>{{ this.$route.params.type }}</p>
+ <p class="mt-40 text-2xl font-bold text-center">Patientez, chargement en cours...</p>
 </template>
 
 <script>

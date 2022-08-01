@@ -1,18 +1,20 @@
 <template>
- <div
-      class="flex items-center justify-center px-2 py-2 mx-auto mt-10 font-semibold text-white bg-red-600 border border-red-600 rounded w-72 hover:bg-red-500 hover:text-white hover:border-transparent"
-    >
-      <router-link v-if="type === 'serie'" :to="{ name: 'series' }">
-        Retour à l'accueil des séries
-      </router-link>
-    </div>
-    <div
-      class="flex items-center justify-center px-2 py-2 mx-auto mt-10 font-semibold text-white bg-red-600 border border-red-600 rounded w-72 hover:bg-red-500 hover:text-white hover:border-transparent"
-    >
-      <router-link v-if="type === 'film'" :to="{ name: 'films' }">
-        Retour à l'accueil des films
-      </router-link>
-    </div>
+  <div
+    v-if="oneShow"
+    class="flex items-center justify-center px-2 py-2 mx-auto mt-10 font-semibold text-white bg-red-600 border border-red-600 rounded w-72 hover:bg-red-500 hover:text-white hover:border-transparent"
+  >
+    <router-link v-if="type === 'serie'" :to="{ name: 'series' }">
+      Retour à l'accueil des séries
+    </router-link>
+  </div>
+  <div
+    v-if="oneMovie"
+    class="flex items-center justify-center px-2 py-2 mx-auto mt-10 font-semibold text-white bg-red-600 border border-red-600 rounded w-72 hover:bg-red-500 hover:text-white hover:border-transparent"
+  >
+    <router-link v-if="type === 'film'" :to="{ name: 'films' }">
+      Retour à l'accueil des films
+    </router-link>
+  </div>
   <div v-if="oneMovie">
     <h2 class="mt-10 text-3xl text-center underline lg:mt-0 lg:text-4xl">
       {{ oneMovie.title }}
@@ -311,7 +313,7 @@ export default {
           : (this.oneShow = res.data);
         this.videos = res.data.videos.results;
         this.genres = res.data.genres;
-        this.cast = res.data.credits.cast.splice(0, 20);
+        this.cast = res.data.credits.cast.splice(0, 15);
         this.producers = res.data.credits.crew.filter(
           (crew) => crew.job === 'Producer'
         );
