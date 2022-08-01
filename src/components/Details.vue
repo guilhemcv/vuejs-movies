@@ -16,7 +16,7 @@
     </router-link>
   </div>
   <div v-if="oneMovie">
-    <h2 class="mt-10 text-3xl text-center underline lg:mt-0 lg:text-4xl">
+    <h2 class="mt-10 text-3xl text-center underline lg:text-4xl">
       {{ oneMovie.title }}
     </h2>
     <div
@@ -298,7 +298,6 @@ export default {
   },
 
   mounted() {
-    console.log(this.type);
     axios
       .get(
         `https://api.themoviedb.org/3/${
@@ -318,8 +317,6 @@ export default {
           (crew) => crew.job === 'Producer'
         );
         this.similar = res.data.similar.results.splice(0, 5);
-
-        console.log(this.oneMovie);
       });
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center justify-center h-full pb-40 -mb-20"
+    class="flex flex-col items-center justify-center h-full -mb-20 pb-72"
     v-if="searched === false"
   >
     <h3 class="mb-5 text-lg md:text-xl">Rechercher un film ou une série :</h3>
@@ -49,8 +49,8 @@
   </div>
   <div v-if="searched">
     <div v-if="movieCheck" :key="newKey">
-      <h2 v-if="loading" class="my-10 text-3xl text-center ">
-        Films contenant  <span class="italic">"{{ search }}"</span>
+      <h2 v-if="loading" class="my-10 text-3xl text-center">
+        Films contenant <span class="italic">"{{ search }}"</span>
       </h2>
       <div class="flex flex-wrap justify-center">
         <div v-for="movie in movies">
@@ -70,16 +70,16 @@
             <h2 class="card-zoom-text">{{ movie.title }}</h2>
           </div>
           <div class="flex justify-center mb-5">
-          <router-link
-            class="px-4 py-2 mx-auto font-semibold text-white bg-red-600 border border-red-600 rounded hover:bg-red-500 hover:text-white hover:border-transparent"
-            :to="{
-              name: 'detailFilm',
-              params: { id: movie.id, type: 'film' },
-            }"
-          >
-            Détail
-          </router-link>
-        </div>
+            <router-link
+              class="px-4 py-2 mx-auto font-semibold text-white bg-red-600 border border-red-600 rounded hover:bg-red-500 hover:text-white hover:border-transparent"
+              :to="{
+                name: 'detailFilm',
+                params: { id: movie.id, type: 'film' },
+              }"
+            >
+              Détail
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -107,16 +107,16 @@
             <h2 class="card-zoom-text">{{ show.name }}</h2>
           </div>
           <div class="flex justify-center mb-5">
-          <router-link
-            class="px-4 py-2 mx-auto font-semibold text-white bg-red-600 border border-red-600 rounded hover:bg-red-500 hover:text-white hover:border-transparent"
-            :to="{
-              name: 'detailSerie',
-              params: { id: show.id, type: 'serie' },
-            }"
-          >
-            Détail
-          </router-link>
-        </div>
+            <router-link
+              class="px-4 py-2 mx-auto font-semibold text-white bg-red-600 border border-red-600 rounded hover:bg-red-500 hover:text-white hover:border-transparent"
+              :to="{
+                name: 'detailSerie',
+                params: { id: show.id, type: 'serie' },
+              }"
+            >
+              Détail
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -153,14 +153,13 @@ export default {
         )
         .then((res) => {
           this.movies = res.data.results;
-          console.log(this.movies);
           this.movieCheck = true;
           this.newKey = this.newKey + 1;
           this.loading = true;
           this.searched = true;
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     },
     getShows() {
@@ -172,45 +171,17 @@ export default {
         )
         .then((res) => {
           this.shows = res.data.results;
-          console.log(this.shows);
           this.showCheck = true;
           this.newKey = this.newKey + 1;
           this.loading = true;
           this.searched = true;
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     },
     updateList() {
       this.picked === 'movie' ? this.getMovies() : this.getShows();
-      /* 
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${
-            import.meta.env.VITE_API_TMDB
-          }&language=fr-FR&query=${this.search}`
-        )
-        .then((res) => {
-          this.movies = res.data.results;
-          this.newKey = this.newKey + 1;
-          this.loading = true;
-          this.searched = true;
-        })
-        .then(
-          axios
-            .get(
-              `https://api.themoviedb.org/3/search/tv?api_key=${
-                import.meta.env.VITE_API_TMDB
-              }&language=fr-FR&query=${this.search}`
-            )
-            .then((res) => {
-              console.log(res.data.results);
-              this.newKey = this.newKey + 1;
-              this.shows = res.data.results;
-            })
-        )
-        .catch((err) => console.error(err)); */
     },
     imageChecker(image) {
       if (image === null) {

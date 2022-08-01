@@ -163,7 +163,6 @@ export default {
             (trailer) => trailer.type === 'Trailer'
           );
           this.cast = res.data.credits.cast.splice(0, 12);
-          console.log(this.cast);
         });
   },
   methods: {

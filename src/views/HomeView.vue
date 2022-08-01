@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center justify-around w-11/12 mx-auto mb-20 translate-y-6 md:translate-y-16 lg:translate-y-40 lg:flex-row"
+    class="flex flex-col items-center justify-around w-11/12 mx-auto mb-20 translate-y-6 lg:translate-y-36 md:translate-y-16 lg:flex-row"
   >
     <div class="flex flex-col w-11/12md:ml-10">
       <h1
@@ -21,9 +21,7 @@
         class="mb-24 lg:mb-0 lg:mr-20"
         src="../assets/images/accueil.gif"
         alt="accueil"
-        width="600"
       />
     </div>
   </div>
 </template>
-

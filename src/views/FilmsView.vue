@@ -5,7 +5,7 @@
       loadMostRated === false &&
       loadMostPopular === false
     "
-    class="flex flex-col items-center justify-center h-full pb-60 md:pb-40"
+    class="flex flex-col items-center justify-center h-full pb-40 md:pb-40"
   >
   <h2 class="pb-10 text-3xl font-bold text-center underline">Les Films</h2>
    <button
