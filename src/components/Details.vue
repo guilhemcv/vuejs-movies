@@ -301,16 +301,13 @@ export default {
         this.type === 'film'
           ? (this.oneMovie = res.data)
           : (this.oneShow = res.data);
-        this.oneTrailer = res.data.videos.results.filter(
-          (trailer) => trailer.type === 'Trailer'
-        );
         this.videos = res.data.videos.results;
         this.genres = res.data.genres;
         this.cast = res.data.credits.cast.splice(0, 20);
         this.producers = res.data.credits.crew.filter(
           (crew) => crew.job === 'Producer'
         );
-        this.similar = res.data.similar.results;
+        this.similar = res.data.similar.results.splice(0, 5);
 
         console.log(this.oneMovie);
       });
