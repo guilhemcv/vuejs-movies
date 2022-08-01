@@ -264,9 +264,7 @@
       </div>
     </div>
   </div>
-<back-to-top bottom="90px" right="30px">
-  <button type="button" class="p-3 text-black bg-yellow-400 rounded">Retour en haut</button>
-</back-to-top>    
+   
 </template>
 
 <script>
